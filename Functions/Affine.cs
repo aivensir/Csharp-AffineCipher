@@ -10,17 +10,7 @@ namespace Functions
         private static int m = 256; // alphabet potency
         public static void Encryption()
         {
-            do
-            {
-                Console.Write("Enter the file name to encrypt (with extension): ");
-                filename = Console.ReadLine();
-                if (!File.Exists(filename)) Console.WriteLine("File not found. Try again!");
-            } while (!File.Exists(filename));
-
-            Byte[] M = File.ReadAllBytes(filename);
-            a = 21; b = 57;//chosen by dev      
-            for (int i = 0; i < M.Length; i++) { M[i] = (byte)((a * M[i] + b) % m); }
-            File.WriteAllBytes(filename, M);
+            
         }
         public static void Decryption()
         {
