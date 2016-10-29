@@ -6,8 +6,8 @@ namespace Functions
     public static class Affine
     {
         private static string filename;
-        private static byte a = 0, b = 0;
-        private static int m = 256;        
+        private static byte a = 0, b = 0; //the key
+        private static int m = 256; // alphabet potency
         public static void Encryption()
         {
             do
@@ -18,7 +18,7 @@ namespace Functions
             } while (!File.Exists(filename));
 
             Byte[] M = File.ReadAllBytes(filename);
-            a = 21; b = 57;//variant 9            
+            a = 21; b = 57;//chosen by dev      
             for (int i = 0; i < M.Length; i++) { M[i] = (byte)((a * M[i] + b) % m); }
             File.WriteAllBytes(filename, M);
         }
@@ -32,7 +32,7 @@ namespace Functions
             } while (!File.Exists(filename));
 
             Byte[] C = File.ReadAllBytes(filename);
-            a = 21; b = 57;//variant 9
+            a = 21; b = 57;//chosen by dev
             int obr_a  = 0;
             int x, y;
             EuclidAdvanced(a, m, out x, out y);
